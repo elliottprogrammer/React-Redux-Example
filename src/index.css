@@ -1,14 +1,64 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+        "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.App-header {
+    background-color: #444;
+    border-bottom: 3px solid #61dafb;
+}
+
+.App-logo {
+    max-height: 250px;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.page-wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+button {
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.3rem;
+    background-color: #ededed;
+    margin-right: 1rem;
+}
+
+.history-list li {
+    list-style: none;
+    padding: 0.4rem 0;
+}
+
+.del-item {
+    display: inline-block;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #ccc;
+    background: #ebebeb;
+    line-height: 17px;
+    padding-left: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.plus {
+    display: inline-block;
+    transform: rotate(45deg);
+    color: red;
+    font-size: 1.3rem;
 }

@@ -1,28 +1,59 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import ReactHeader from './components/ReactHeader';
+
+
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+    state= {
+        age: 21
+    }
 
-export default App;
+    handleAgeUp(e) {
+        const {age} = this.state;
+        this.setState({ age: age + 1 });
+    }
+
+    handleAgeDown(e) {
+        const {age} = this.state;
+        this.setState({ age: age - 1 });
+    }
+
+    render() {
+        return (
+        <div>
+            <ReactHeader/>
+            <div className="container page-wrapper">
+                <div>Age: <span>{this.props.age}</span></div>
+                <br/>
+                <button onClick={this.props.onAgeUp}>Age Up</button>
+                <button onClick={this.props.onAgeDown}>Age Down</button>
+                <hr />
+                <div>History:</div>
+                <ul className="history-list">
+                    {this.props.history.map((val, index) => (
+                    <li key={index} onClick={() => this.props.onDelItem(index)}>age: {val.age} <span className="del-item"><span className="plus">+</span></span></li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+        );
+    }
+}
+ const mapStateToProps = (state) => {
+     return {
+        age: state.age,
+        history: state.history
+     }
+ }
+
+ const mapDispatchToProps = (dispatch) => {
+     return {
+         onAgeUp: () => dispatch({type: 'AGE_UP', value: 1 }),
+         onAgeDown: () => dispatch({type: 'AGE_DOWN', value: 1 }),
+         onDelItem: (key) => dispatch({type: 'DELETE_HIST_ITEM', index: key })
+     }
+ }
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
